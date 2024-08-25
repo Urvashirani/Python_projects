@@ -1,0 +1,8 @@
+def is_palindrome(sentence):
+  sentence = sentence.replace(" ", "").lower()
+  return sentence == sentence[::-1]
+sentence = input("Enter a sentence: ")
+if is_palindrome(sentence):
+    print(f"Yes, '{sentence}' is a palindrome!")
+else:
+    print(f"No, '{sentence}' is not a palindrome.")
