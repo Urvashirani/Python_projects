@@ -1,0 +1,69 @@
+
+class ATM:
+  def __init__ (self):
+    self.pin = ""
+    self.balance = 0
+    self.menu()
+
+  def menu(self):
+    user_input = input("""
+    Hi,How can i help you 
+    *.Press 1 to creating pin.
+    *.Press 2 to change pin.
+    *.Press 3 to check balance.
+    *.Press 4 to withdraw money.
+    *.Anything else to exit.
+    """ )
+    
+    if user_input == "1":
+      self.create_pin()
+    elif user_input == "2":
+      self.change_pin()
+    elif user_input == "3":
+      self.check_balance()
+    elif user_input == "4":
+      self.withdraw_balance()
+    else:
+      exit()
+    
+  def create_pin(self):
+    user_pin = input("Enter your pin: ")
+    self.pin = user_pin
+    user_balance = int(input("Enter your balance: "))
+    self.balance = user_balance
+    print("Pin created successfully")
+    self.menu()
+  
+  def change_pin(self):
+    old_pin = input("Enter your old pin ") 
+    if old_pin == self.pin:
+      new_pin = input("Enter your new pin ")
+      self.pin = new_pin
+      print("Pin changed successfully")
+    else:
+      print("Enter the correct pin ")
+    self.menu() 
+
+  def check_balance(self):
+    user_pin = input("Enter your pin ")
+    if user_pin == self.pin:
+      print(f"Your balance is {self.balance}")  
+    else:
+      print("Your pin is incorrect")
+      print("Try again") 
+      self.menu()
+    self.menu()
+  
+  def withdraw_balance(self):
+    user_pin = input("Enter your pin: ")
+    if user_pin == self.pin:
+      ammount = int(input("Enter the ammount you want to withdraw:"))
+      if ammount <= self.balance:
+        print("Ammount withdrawl successfully:")
+        print(f"Your remaining balance is {self.balance - ammount} ")
+      else:
+        print("You don't have sufficient balance: ")
+    self.menu()  
+
+    
+
